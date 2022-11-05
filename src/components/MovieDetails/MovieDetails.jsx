@@ -1,5 +1,5 @@
 import { fetchMovieDetail } from 'Api';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { MovieInfoWrap, MovieInfo } from './MovieDetails.styled';
 
@@ -7,7 +7,10 @@ export const MovieDetail = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
-  const backLink = location.state?.from ?? '/';
+  // const backLink = location.state?.from ?? '/';
+  const backLinkRef = useRef(location.state?.from ?? '/');
+  // console.log(backLink);
+  // console.log(backLinkRef);
 
   useEffect(() => {
     fetchMovieDetail(movieId).then(setMovie);
@@ -28,7 +31,7 @@ export const MovieDetail = () => {
   } = movie;
   return (
     <main>
-      <Link to={backLink}>Back to movies</Link>
+      <Link to={backLinkRef.current}>Back to movies</Link>
       <MovieInfoWrap>
         <div>
           <img
