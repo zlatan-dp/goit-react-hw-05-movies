@@ -10,6 +10,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   padding: 16px 0;
+  margin-bottom: 16px;
   box-shadow: 2px 2px 10px 3px rgba(0, 0, 0, 0.37);
 `;
 

@@ -14,3 +14,21 @@ export const fetchMovieDetail = id => {
     return res.data;
   });
 };
+
+export const fetchMovieCast = id => {
+  return axios.get(`3/movie/${id}/credits?api_key=${KEY}`).then(res => {
+    return res.data.cast;
+  });
+};
+
+export const fetchMovieReviews = id => {
+  return axios.get(`3/movie/${id}/reviews?api_key=${KEY}`).then(res => {
+    return res.data.results;
+  });
+};
+
+export const fetchMovies = query => {
+  return axios.get(`3/search/movie?api_key=${KEY}&query=${query}`).then(res => {
+    return res.data.results;
+  });
+};

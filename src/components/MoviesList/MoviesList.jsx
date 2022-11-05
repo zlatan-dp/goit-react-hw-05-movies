@@ -1,9 +1,10 @@
 import { fetchTrendingMovies } from 'Api';
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 export const MovieList = () => {
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     fetchTrendingMovies().then(setMovies);
@@ -13,7 +14,9 @@ export const MovieList = () => {
     <ul>
       {movies.map(movie => (
         <li key={movie.id}>
-          <NavLink to={`/movies/${movie.id}`}>{movie.title}</NavLink>
+          <NavLink to={`/movies/${movie.id}`} state={{ from: location }}>
+            {movie.title}
+          </NavLink>
         </li>
       ))}
     </ul>
