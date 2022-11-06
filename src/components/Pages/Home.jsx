@@ -1,6 +1,6 @@
 import { MovieList } from 'components/MoviesList/MoviesList';
 
-export const Home = () => {
+const Home = () => {
   return (
     <main>
       <h1>Tranding today</h1>
@@ -8,3 +8,5 @@ export const Home = () => {
     </main>
   );
 };
+
+export default Home;

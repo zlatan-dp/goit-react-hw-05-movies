@@ -1,14 +1,15 @@
 import { fetchMovieDetail } from 'Api';
-import { useEffect, useState, useRef } from 'react';
-import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { useEffect, useState, useRef, Suspense } from 'react';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import {
   MovieInfoWrap,
   MovieInfo,
   BackLink,
   AddInfo,
+  Link,
 } from './MovieDetails.styled';
 
-export const MovieDetail = () => {
+const MovieDetail = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
@@ -67,7 +68,11 @@ export const MovieDetail = () => {
           </li>
         </ul>
       </AddInfo>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </main>
   );
 };
+
+export default MovieDetail;

@@ -26,3 +26,12 @@ export const BackLink = styled(NavLink)`
 export const AddInfo = styled.div`
   border-bottom: 1px solid gray;
 `;
+
+export const Link = styled(NavLink)`
+  color: black;
+  text-decoration: none;
+
+  &.active {
+    color: blue;
+  }
+`;

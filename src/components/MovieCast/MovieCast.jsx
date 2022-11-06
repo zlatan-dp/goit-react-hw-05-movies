@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { CastList, CastListWrapper } from './MovieCast.styled';
 
-export const MovieCast = () => {
+const MovieCast = () => {
   const [movieCast, setMovieCast] = useState(null);
   const { movieId } = useParams();
 
@@ -40,3 +40,5 @@ export const MovieCast = () => {
     </CastListWrapper>
   );
 };
+
+export default MovieCast;
