@@ -29,7 +29,7 @@ const Movies = () => {
         <input type="text" name="query" />
         <button type="submit">search</button>
       </form>
-      {movies && (
+      {movies.length > 0 && (
         <ul>
           {movies.map(movie => (
             <li key={movie.id}>

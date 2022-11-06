@@ -1,7 +1,12 @@
 import { fetchMovieDetail } from 'Api';
 import { useEffect, useState, useRef } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
-import { MovieInfoWrap, MovieInfo } from './MovieDetails.styled';
+import {
+  MovieInfoWrap,
+  MovieInfo,
+  BackLink,
+  AddInfo,
+} from './MovieDetails.styled';
 
 export const MovieDetail = () => {
   const [movie, setMovie] = useState(null);
@@ -31,7 +36,7 @@ export const MovieDetail = () => {
   } = movie;
   return (
     <main>
-      <Link to={backLinkRef.current}>Back to movies</Link>
+      <BackLink to={backLinkRef.current}>Back to movies</BackLink>
       <MovieInfoWrap>
         <div>
           <img
@@ -51,7 +56,7 @@ export const MovieDetail = () => {
           <p>{genres.map(genre => genre.name).join(' ')}</p>
         </MovieInfo>
       </MovieInfoWrap>
-      <div>
+      <AddInfo>
         <p>Additional iformation</p>
         <ul>
           <li>
@@ -61,7 +66,7 @@ export const MovieDetail = () => {
             <Link to={'reviews'}>Reviews</Link>
           </li>
         </ul>
-      </div>
+      </AddInfo>
       <Outlet />
     </main>
   );
